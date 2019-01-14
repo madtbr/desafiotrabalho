@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Secretarias{% endblock %}
+{% block title %}Editar Secretarias{% endblock %}
 
 {% block body %}
-    <h1>Edit Secretarias</h1>
+    <h1>Editar Secretarias</h1>
 
-    {{ include('secretarias/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('secretarias/_form.html.twig', {'button_label': 'Atualizar'}) }}
 
-    <a href="{{ path('secretarias_index') }}">back to list</a>
+    <a href="{{ path('secretarias_index') }}">voltar para lista</a>
 
     {{ include('secretarias/_delete_form.html.twig') }}
 {% endblock %}

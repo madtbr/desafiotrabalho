@@ -17,10 +17,11 @@ class Documentos
     private $id;
 
     /**
-     * @ORM\Column(type="blob")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Funcionarios", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Funcionarios", inversedBy="imagem")
      */
     private $imagem;
+
+   
 
     public function getId(): ?int
     {

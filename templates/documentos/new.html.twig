@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Documentos{% endblock %}
+
+{% block body %}
+    <h1>Create new Documentos</h1>
+
+    {{ include('documentos/_form.html.twig') }}
+
+    <a href="{{ path('documentos_index') }}">back to list</a>
+{% endblock %}

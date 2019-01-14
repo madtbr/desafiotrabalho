@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salarios index{% endblock %}
+
+{% block body %}
+    <h1>Salarios index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Salbase</th>
+                <th>Gratificacao</th>
+                <th>Desconto</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salario in salarios %}
+            <tr>
+                <td>{{ salario.id }}</td>
+                <td>{{ salario.salbase }}</td>
+                <td>{{ salario.gratificacao }}</td>
+                <td>{{ salario.desconto }}</td>
+                <td>
+                    <a href="{{ path('salarios_show', {'id': salario.id}) }}">show</a>
+                    <a href="{{ path('salarios_edit', {'id': salario.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('salarios_new') }}">Create new</a>
+{% endblock %}
