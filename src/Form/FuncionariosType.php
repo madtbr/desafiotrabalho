@@ -6,6 +6,7 @@ use App\Entity\Funcionarios;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class FuncionariosType extends AbstractType
 {
@@ -13,11 +14,20 @@ class FuncionariosType extends AbstractType
     {
         $builder
             ->add('nome')
-            ->add('tipo')
-            ->add('status')
-            ->add('salario')
+            ->add('tipo', ChoiceType::class, array(
+                'choices'  => array(
+                    'Estatutário'    => 1,
+                    'Comissionado' => 0
+                )))
+            ->add('status', ChoiceType::class, array(
+                'choices'  => array(
+                    'Ativo'    =>1,
+                    'Inativo' =>0
+                )))
+            
             ->add('secretaria')
         ;
+        $builder->add('salario' , SalariosType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

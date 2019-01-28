@@ -37,4 +37,9 @@ class Secretarias
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->getNome();
+    }
+    
 }

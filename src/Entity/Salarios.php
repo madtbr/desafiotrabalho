@@ -71,4 +71,5 @@ class Salarios
 
         return $this;
     }
+    
 }

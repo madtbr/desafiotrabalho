@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Funcionarios index{% endblock %}
+{% block title %}Lista de Funcionários {% endblock %}
 
 {% block body %}
-    <h1>Funcionarios index</h1>
+    <h1>Lista de Funcionários</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+               <!-- <th>Id</th>-->
                 <th>Nome</th>
                 <th>Tipo</th>
                 <th>Status</th>
@@ -18,22 +18,22 @@
         <tbody>
         {% for funcionario in funcionarios %}
             <tr>
-                <td>{{ funcionario.id }}</td>
+                <!--<td>{{ funcionario.id }}</td>-->
                 <td>{{ funcionario.nome }}</td>
                 <td>{{ funcionario.tipo }}</td>
                 <td>{{ funcionario.status }}</td>
                 <td>
-                    <a href="{{ path('funcionarios_show', {'id': funcionario.id}) }}">show</a>
-                    <a href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}">edit</a>
+                    <a href="{{ path('funcionarios_show', {'id': funcionario.id}) }}">mostrar</a>
+                    <a href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}">editar</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">nenhum registro encontrado</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('funcionarios_new') }}">Create new</a>
+    <a href="{{ path('funcionarios_new') }}">Criar novo funcionário</a>
 {% endblock %}

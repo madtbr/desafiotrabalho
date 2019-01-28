@@ -12,7 +12,9 @@ class SalariosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('salbase')
+            ->add('salbase', null, array(
+                'label' => 'Salário Base'
+            ))
             ->add('gratificacao')
             ->add('desconto')
         ;

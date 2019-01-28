@@ -7,26 +7,27 @@
 
     <table class="table">
         <tbody>
+           
             <tr>
-                <th>Id</th>
-                <td>{{ funcionario.id }}</td>
-            </tr>
-            <tr>
-                <th>Nome</th>
-                <td>{{ funcionario.nome }}</td>
+                <th> Nome </th>
+                <td> {{ funcionario.nome }} </td>
             </tr>
             <tr>
                 <th>Tipo</th>
-                <td>{{ funcionario.tipo }}</td>
+                <td> {{ funcionario.tipo }} </td>
             </tr>
             <tr>
                 <th>Status</th>
-                <td>{{ funcionario.status }}</td>
+                <td>{% if funcionario.status == 1 %}Ativo{% else %}Inativo{% endif %} </td>
+            </tr>
+            <tr>
+                <th>Salário Base</th>
+                <td>R$ {{ funcionario.salario.salbase|number_format(2,',','.') }} </td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('funcionarios_index') }}">back to list</a>
+    <a href="{{ path('funcionarios_index') }}">voltar para lista</a>
 
     <a href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}">edit</a>
 
