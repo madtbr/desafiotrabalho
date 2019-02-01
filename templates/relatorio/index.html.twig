@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Período{% endblock %}
+
+{% block body %}
+<div class="espaco">
+    <div class="ui grid">
+        <div class="eight wide column">
+            <h1>Relatório</h1>
+        </div>
+    </div>
+        {{ include('relatorio/_form.html.twig') }}
+</div>
+{% endblock %}

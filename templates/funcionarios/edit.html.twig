@@ -4,7 +4,16 @@
 
 {% block body %}
     <h1>Editar Funcionários</h1>
-
+{% for documento in funcionario.imagem %}
+                <tr>
+                    <td><img src="{{ asset('uploads/img/' ~ documento.imagem) }}"></td>
+                    {# <!--<td><a href="{{ asset('uploads/img/' , {'imagem': funcionario.imagem}) }}">View imagem</a></td>--> #}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">nenhuma imagem encontrada</td>
+                </tr>
+            {% endfor %}
     {{ include('funcionarios/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('funcionarios_index') }}">voltar para lista</a>

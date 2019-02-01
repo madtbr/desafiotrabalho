@@ -1,0 +1,78 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}Relatórios - {% endblock %}
+
+{% block body %}
+<div class="espaco">
+    <h1>Relatório de Funcionários</h1>
+    <br>
+    {{ form_start(form, {'attr': {'class': 'ui form'}}) }}
+    <div class="ui grid">
+       
+            <div class="field">
+                {{ form_label(form.data_inicio, 'Data Início', {'attr': {'data-row-class': 'two wide'}}) }}
+                {{ form_widget(form.data_inicio, {'attr': {'data-row-class': 'one wide'}}) }}
+            </div>
+            <div class="field">
+                {{ form_label(form.data_fim) }}
+                {{ form_widget(form.data_fim, {'attr': {'data-row-class': 'two wide'}}) }}
+            </div>
+            <div class="field">
+                {{ form_label(form.status) }}
+                {{ form_widget(form.status, {'attr': {'data-row-class': 'two wide'}}) }}
+            </div>
+              
+    </div><br>
+    <div class="row">
+        <div class="two wide">
+            {{ form_widget(form.pesquisar, {'attr': {'class':'ui primary button'}}) }}
+
+            {{ form_widget(form.pdf, {'attr': {'class':'ui button'}}) }}
+
+            {{ form_widget(form.excel, {'attr': {'class':'ui green button'}}) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th>Mat.</th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Status</th>
+            <th>Data de admissão</th>
+            <th>Data de exoneração</th>
+            <th>Salário líquido</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for funcionario in funcionarios %}
+            <tr>
+                <td>{{ funcionario.matricula }}</td>
+                <td>{{ funcionario.nome }}</td>
+                <td> {{ funcionario.tipo }}</td>
+                <td> {% if funcionario.status == "1"%}
+                        <p>Ativo</p>
+                    {% elseif funcionario.status == "0"%}
+                        <p>Exonerado</p>
+                    {% endif %}</td>
+                <td>{{ funcionario.admissao|date('d/m/Y')}}</td>
+                <td>{{ funcionario.exoneracao == '' ? '' : funcionario.exoneracao|date('d/m/Y') }}</td>
+                <td>{{ funcionario.remuneracao.pagamento|number_format(2, ',', '.') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="18">nenhuma informação encontrada</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+        <tr>
+        </tr>
+    </table>
+
+    <a href='{{ path('relatorio_index') }}' class="ui secondary button"><i class="arrow circle left icon"></i>Voltar</a>
+
+
+</div>
+{% endblock %}

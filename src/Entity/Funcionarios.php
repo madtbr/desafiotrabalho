@@ -42,12 +42,13 @@ class Funcionarios
     private $salario;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Documentos", mappedBy="imagem")
+     * @ORM\OneToMany(targetEntity="App\Entity\Documentos", mappedBy="funcionario")
      */
     private $imagem;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Secretarias")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $secretaria;
 
@@ -150,5 +151,8 @@ class Funcionarios
         $this->secretaria = $secretaria;
 
         return $this;
+    }
+    public function __toString() {
+        return $this->getNome();
     }
 }

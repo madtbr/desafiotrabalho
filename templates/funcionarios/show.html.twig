@@ -7,14 +7,13 @@
 
     <table class="table">
         <tbody>
-           
             <tr>
                 <th> Nome </th>
                 <td> {{ funcionario.nome }} </td>
             </tr>
             <tr>
                 <th>Tipo</th>
-                <td> {{ funcionario.tipo }} </td>
+                <td> {% if funcionario.tipo == 1 %}Estatutario{% else %}Comissionado{% endif %} </td>
             </tr>
             <tr>
                 <th>Status</th>
@@ -24,12 +23,23 @@
                 <th>Salário Base</th>
                 <td>R$ {{ funcionario.salario.salbase|number_format(2,',','.') }} </td>
             </tr>
+            {% for documento in funcionario.imagem %}
+                <tr>
+                    <td><img src="{{ asset('uploads/img/' ~ documento.imagem) }}"></td>
+                    {# <!--<td><a href="{{ asset('uploads/img/' , {'imagem': funcionario.imagem}) }}">View imagem</a></td>--> #}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">nenhuma imagem encontrada</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
+    
 
-    <a href="{{ path('funcionarios_index') }}">voltar para lista</a>
+    <a href="{{ path('funcionarios_index') }}">Voltar para lista</a>
 
-    <a href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}">edit</a>
+    <a href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}"> | Editar</a>
 
     {{ include('funcionarios/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,0 +1,59 @@
+<style>
+    #titulo {
+        text-align: center;
+    }
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    #customers tr:hover {background-color: #ddd;}
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #5a6268;
+        color: white;
+    }
+</style>
+    <h1 id="titulo">Relatório de Funcionarios</h1>
+    <br>
+    <table class="table" id="customers">
+        <thead>
+        <tr>
+            <th>Mat.</th>
+            <th>Nome</th>
+            <th>Cargo</th>
+            <th>Status</th>
+            <th>Data de admissão</th>
+            <th>Data de exoneração</th>
+            <th>Salário líquido</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for funcionario in funcionarios %}
+            <tr>
+                <td>{{ funcionario.matricula }}</td>
+                <td>{{ funcionario.nome }}</td>
+                <td>{{ funcionario.tipo }} </td>
+                <td>{% if funcionario.status == 1 %}
+                        <p>Ativo</p>
+                    {% elseif funcionario.status == 0 %}
+                        <p>Exonerado</p>
+                    {% endif %}</td>
+                <td>{{ funcionario.admissao|date('d/m/Y')}}</td>
+                <td>{{ funcionario.exoneracao == '' ? '' : funcionario.exoneracao|date('d/m/Y') }}</td>
+                <td>{{ funcionario.remuneracao.pagamento|number_format(2, ',', '.') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="18">Nenhum registro encontrado</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

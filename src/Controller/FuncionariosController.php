@@ -38,7 +38,6 @@ class FuncionariosController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($funcionario);
             $entityManager->flush();
-
             return $this->redirectToRoute('funcionarios_index');
         }
 
@@ -53,6 +52,9 @@ class FuncionariosController extends AbstractController
      */
     public function show(Funcionarios $funcionario): Response
     {
+
+        //dump($funcionario->getImagem());
+
         return $this->render('funcionarios/show.html.twig', [
             'funcionario' => $funcionario,
         ]);

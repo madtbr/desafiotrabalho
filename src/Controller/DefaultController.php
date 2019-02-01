@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 
@@ -13,10 +12,11 @@ class DefaultController extends AbstractController
      * @Route("/", name="default")
      * @Template("default/index.html.twig")
      */
-    public function index()
+    public function admin()
     {
+        
         return [];
     }
-
     
 }
+

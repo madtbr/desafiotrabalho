@@ -2,3 +2,41 @@
     {{ form_widget(form) }}
     <br><button class="btn">{{ button_label|default('Salvar') }}</button>
 {{ form_end(form) }}
+
+
+
+
+{# {{ form_start(form, {"attr": {"novalidate": "novalidate"}}) }}
+
+<div class="form-group">
+    {{ form_label(form.nome) }}
+    {{ form_widget(form.nome) }}
+    {{ form_errors(form.nome) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.telefone) }}
+    {{ form_widget(form.telefone) }}
+    {{ form_errors(form.telefone) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.endereco) }}
+    {{ form_widget(form.endereco) }}
+    {{ form_errors(form.endereco) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.animal) }}
+    {{ form_widget(form.animal) }}
+    {{ form_errors(form.animal) }}
+</div>
+    {{ form_widget (form.enviar) }}
+    <a href="{{ path('listar_clientes') }}" class="btn btn-primary btn">Cancelar</a>
+    {{ form_end(form) }} #}
