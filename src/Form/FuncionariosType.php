@@ -3,10 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Funcionarios;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class FuncionariosType extends AbstractType
@@ -37,8 +38,20 @@ class FuncionariosType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])                              
-        ;
+            ])
+            // ->add('data_admissao', EntityType::class, [
+            //     'class' => 'App\Entity\Funcionarios',
+            //     'label' => "Data Admissao",
+            //     'format' => 'dd-MM-yyyy',
+            //     'widget' => 'choice'
+            // ])                              
+            ->add('data_admissao', DateType::class, [
+                
+                'label' => "Data Admissao",
+                'format' => 'dd / MM / yyyy',
+                'widget' => 'choice'
+            ]);                             
+        
         $builder->add('salario' , SalariosType::class);
     }
 

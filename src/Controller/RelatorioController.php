@@ -5,8 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\FuncionariosRepository;
 use Dompdf\Dompdf;
-use PHPExcel;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -81,6 +80,7 @@ class RelatorioController extends AbstractController
                 $data['status']
                // $data['tipo']
             );
+            dump($funcionarios);
             $pdfClicked = $form->get('pdf')->isClicked();
             if ($pdfClicked) {
                 return $this->funcionarioPdf($funcionarios);

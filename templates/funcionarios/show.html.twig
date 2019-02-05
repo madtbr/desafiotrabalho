@@ -23,16 +23,25 @@
                 <th>Salário Base</th>
                 <td>R$ {{ funcionario.salario.salbase|number_format(2,',','.') }} </td>
             </tr>
+            <tr>
+                <th>Gratificação</th>
+                <td>R$ {{ funcionario.salario.gratificacao|number_format(2,',','.') }} </td>
+            </tr>
+            <tr>
+                <th>Desconto</th>
+                <td>R$ {{ funcionario.salario.desconto|number_format(2,',','.') }} </td>
+            </tr>
+            <tr>
+            <th>Imagen(s)</th>
             {% for documento in funcionario.imagem %}
-                <tr>
-                    <td><img src="{{ asset('uploads/img/' ~ documento.imagem) }}"></td>
-                    {# <!--<td><a href="{{ asset('uploads/img/' , {'imagem': funcionario.imagem}) }}">View imagem</a></td>--> #}
-                </tr>
+                <td><img src="{{ asset('uploads/img/' ~ documento.imagem) }}"></td>
+                 
             {% else %}
                 <tr>
                     <td colspan="5">nenhuma imagem encontrada</td>
                 </tr>
             {% endfor %}
+            </tr>
         </tbody>
     </table>
     

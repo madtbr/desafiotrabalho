@@ -47,4 +47,41 @@ class FuncionariosRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function countAll()
+    {
+        return $this->createQueryBuilder('f')
+            ->select('count(f.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+    
+    public function getFuncionarioAtivoPorData($dataInicio, $dataFim, $status)
+    {
+        $q = $this->createQueryBuilder("f");
+        $campo = false;
+            if($status == '1'){
+                $campo = 'f.data_admissao';
+            }elseif($status == '0' and 'f.data_exoneracao' != null){
+                $campo = 'f.data_exoneracao';
+            }
+            $q->where(
+                $q->expr()->between($campo, ':data1', ':data2')
+            );
+            $q->andWhere("f.status = '$status'");
+            $q->setParameter('data1', $dataInicio->format('Y-m-d'));
+            $q->setParameter('data2', $dataFim->format('Y-m-d'));
+        return $q->getQuery()->getResult();
+    }
+    public function salarioTotal()
+    {
+        // $q = $this->createQueryBuilder("f")
+        //     ->select('s.nome, SUM(r.salario) as total')
+        //     ->join("App\Entity\Secretarias", 's', Join::WITH, 'f.secretaria_id = s.id')
+        //     ->join("App\Entity\Salarios", 'r', Join::WITH, 'f.salario_id = r.id')
+        //     ->where('f.status = :status ')
+        //     ->groupBy("s.nome")
+        //     ->setParameter(':status', '1')
+        //     ->getQuery();
+        // return $q->getResult();
+    }
 }

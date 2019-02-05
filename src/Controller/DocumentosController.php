@@ -120,5 +120,20 @@ class DocumentosController extends AbstractController
         }
 
         return $this->redirectToRoute('documentos_index');
+
+        
+    }
+     /**
+     * @Route("/delimg/{id}", name="documentos_deleteimg", methods={"DELETEIMG"})
+     */
+    public function deleteimg(Request $request, Documentos $documento): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$documento->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($documento);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('documentos_index');
     }
 }

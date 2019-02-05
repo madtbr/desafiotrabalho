@@ -7,6 +7,7 @@
 {% for documento in funcionario.imagem %}
                 <tr>
                     <td><img src="{{ asset('uploads/img/' ~ documento.imagem) }}"></td>
+                    <td>{{ include('documentos/_delete_formimg.html.twig') }}</td>
                     {# <!--<td><a href="{{ asset('uploads/img/' , {'imagem': funcionario.imagem}) }}">View imagem</a></td>--> #}
                 </tr>
             {% else %}

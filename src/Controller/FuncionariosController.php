@@ -95,4 +95,5 @@ class FuncionariosController extends AbstractController
 
         return $this->redirectToRoute('funcionarios_index');
     }
+    
 }

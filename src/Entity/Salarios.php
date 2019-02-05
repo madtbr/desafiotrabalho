@@ -72,6 +72,12 @@ class Salarios
         return $this;
     }
     
-    
+    public function getPagamento()
+    {
+        $remuneracao = $this->getSalbase();
+        $gratificacao = $this->getGratificacao();
+        $desconto = $this->getDesconto();
+        return ($remuneracao + $gratificacao) - $desconto;
+    }
     
 }

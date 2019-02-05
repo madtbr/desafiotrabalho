@@ -48,7 +48,7 @@
         <tbody>
         {% for funcionario in funcionarios %}
             <tr>
-                <td>{{ funcionario.matricula }}</td>
+                <td>{{ funcionario.id }}</td>
                 <td>{{ funcionario.nome }}</td>
                 <td> {{ funcionario.tipo }}</td>
                 <td> {% if funcionario.status == "1"%}
@@ -56,13 +56,13 @@
                     {% elseif funcionario.status == "0"%}
                         <p>Exonerado</p>
                     {% endif %}</td>
-                <td>{{ funcionario.admissao|date('d/m/Y')}}</td>
-                <td>{{ funcionario.exoneracao == '' ? '' : funcionario.exoneracao|date('d/m/Y') }}</td>
-                <td>{{ funcionario.remuneracao.pagamento|number_format(2, ',', '.') }}</td>
+                <td>{{ funcionario.dataAdmissao|date('d/m/Y')}}</td>
+                <td>{{ funcionario.dataExoneracao == '' ? '' : funcionario.dataExoneracao|date('d/m/Y') }}</td>
+                <td>{{ funcionario.salario.pagamento|number_format(2, ',', '.') }}</td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="18">nenhuma informação encontrada</td>
+                <td colspan="18">nenhumaa informação encontrada</td>
             </tr>
 
         {% endfor %}

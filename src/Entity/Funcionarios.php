@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FuncionariosRepository")
@@ -42,12 +45,27 @@ class Funcionarios
     private $salario;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Documentos", mappedBy="funcionario")
+     * @var \DateTime
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
+     * @Assert\Date()
+     */
+    private $data_admissao;
+    
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="date", nullable=true)
+     * @Assert\Date()
+     */
+    private $data_exoneracao;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Documentos", mappedBy="funcionario", cascade={"persist", "remove"})
      */
     private $imagem;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Secretarias")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Secretarias", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $secretaria;
@@ -150,6 +168,24 @@ class Funcionarios
     {
         $this->secretaria = $secretaria;
 
+        return $this;
+    }
+    public function getDataAdmissao()
+    {
+        return $this->data_admissao;
+    }
+    public function setDataAdmissao($data_admissao)
+    {
+        $this->data_admissao = $data_admissao;
+        return $this;
+    }
+    public function getDataExoneracao()
+    {
+        return $this->data_exoneracao;
+    }
+    public function setDataExoneracao($data_exoneracao)
+    {
+        $this->data_exoneracao = $data_exoneracao;
         return $this;
     }
     public function __toString() {
