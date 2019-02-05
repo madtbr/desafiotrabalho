@@ -5,7 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\FuncionariosRepository;
 use Dompdf\Dompdf;
-
+use PHPExcel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -66,9 +67,9 @@ class RelatorioController extends AbstractController
             ->add('pesquisar', SubmitType::class, [
                 'label' => 'Pesquisar'
             ])
-            ->add('excel', SubmitType::class, [
-                'label' => 'Gerar Excel'
-            ])
+            // ->add('excel', SubmitType::class, [
+            //     'label' => 'Gerar Excel'
+            // ])
             ->getForm();
             
         $form->handleRequest($request);
@@ -80,21 +81,21 @@ class RelatorioController extends AbstractController
                 $data['status']
                // $data['tipo']
             );
-            dump($funcionarios);
+            //dump($funcionarios);
             $pdfClicked = $form->get('pdf')->isClicked();
             if ($pdfClicked) {
                 return $this->funcionarioPdf($funcionarios);
             }
-            $excelClicked = $form->get('excel')->isClicked();
-            if ($excelClicked) {
-                $excel = $this->funcionarioExcel($funcionarios);
-                return new Response(
-                    $excel, 200, array (
-                    'Content-Type' => 'application/vnd.ms-excel',
-                    'Content-Disposition' => 'attachment; filename="Relatório_Funcionários.xlsx"',
-                )
-                );
-            }
+            // $excelClicked = $form->get('excel')->isClicked();
+            // if ($excelClicked) {
+            //     $excel = $this->funcionarioExcel($funcionarios);
+            //     return new Response(
+            //         $excel, 200, array (
+            //         'Content-Type' => 'application/vnd.ms-excel',
+            //         'Content-Disposition' => 'attachment; filename="Relatório_Funcionários.xlsx"',
+            //     )
+            //     );
+            // }
         }
         return $this->render('relatorio/funcionarioRel.html.twig', [
             'funcionarios' => $funcionarios,
@@ -136,9 +137,9 @@ class RelatorioController extends AbstractController
             $excel->setActiveSheetIndex(0)->setCellValue('B'.$contador, $linha->getNome());
             $excel->setActiveSheetIndex(0)->setCellValue('C'.$contador, $linha->getTipo());
             $excel->setActiveSheetIndex(0)->setCellValue('D'.$contador, $linha->getStatus());
-            $excel->setActiveSheetIndex(0)->setCellValue('E'.$contador, $linha->getAdmissao());
-            $excel->setActiveSheetIndex(0)->setCellValue('F'.$contador, $linha->getExoneracao());
-            $excel->setActiveSheetIndex(0)->setCellValue('G'.$contador, $linha->getRemuneracao()->getPagamento());
+           // $excel->setActiveSheetIndex(0)->setCellValue('E'.$contador, $linha->getAdmissao());
+           // $excel->setActiveSheetIndex(0)->setCellValue('F'.$contador, $linha->getExoneracao());
+            //$excel->setActiveSheetIndex(0)->setCellValue('G'.$contador, $linha->getRemuneracao()->getPagamento());
         }
         /*header('Content-Type: application/vnd.openxmlformarts-officedocument.spreadsheetml.sheet ');
         header('Content-Disposition: attachment; filename="Relatório_Funcionários.xlsx"');

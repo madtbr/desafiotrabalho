@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Funcionarios;
+use App\Entity\Salarios;
+use App\Entity\Secretarias;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method Funcionarios|null find($id, $lockMode = null, $lockVersion = null)
@@ -74,14 +77,16 @@ class FuncionariosRepository extends ServiceEntityRepository
     }
     public function salarioTotal()
     {
-        // $q = $this->createQueryBuilder("f")
-        //     ->select('s.nome, SUM(r.salario) as total')
-        //     ->join("App\Entity\Secretarias", 's', Join::WITH, 'f.secretaria_id = s.id')
-        //     ->join("App\Entity\Salarios", 'r', Join::WITH, 'f.salario_id = r.id')
-        //     ->where('f.status = :status ')
-        //     ->groupBy("s.nome")
-        //     ->setParameter(':status', '1')
-        //     ->getQuery();
-        // return $q->getResult();
+      
+        $q = $this->createQueryBuilder("f")
+            ->select('s.nome, SUM(r.salbase) as total')
+            ->join("App\Entity\Secretarias", 's', Join::WITH, 'f.secretaria = s.id')
+            ->join("App\Entity\Salarios", 'r', Join::WITH, 'f.salario = r.id')
+            ->where('f.status = :status ')
+            ->groupBy("s.nome")
+            ->setParameter(':status', '0')
+            ->getQuery();
+        //dump($q->getResult());
+            return $q->getResult();
     }
 }

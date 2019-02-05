@@ -29,7 +29,7 @@
 
             {{ form_widget(form.pdf, {'attr': {'class':'ui button'}}) }}
 
-            {{ form_widget(form.excel, {'attr': {'class':'ui green button'}}) }}
+            {# {{ form_widget(form.excel, {'attr': {'class':'ui green button'}}) }} #}
         </div>
     </div>
     {{ form_end(form) }}
@@ -62,7 +62,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="18">nenhumaa informação encontrada</td>
+                <td colspan="18">nenhuma informação encontrada</td>
             </tr>
 
         {% endfor %}
@@ -71,7 +71,7 @@
         </tr>
     </table>
 
-    <a href='{{ path('relatorio_index') }}' class="ui secondary button"><i class="arrow circle left icon"></i>Voltar</a>
+    <a href='/' class="ui secondary button"><i class="arrow circle left icon"></i>Voltar</a>
 
 
 </div>

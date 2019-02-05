@@ -48,7 +48,7 @@
                     {% endif %}</td>
                 <td>{{ funcionario.dataAdmissao|date('d/m/Y')}}</td>
                 <td>{{ funcionario.dataExoneracao == '' ? '' : funcionario.dataExoneracao|date('d/m/Y') }}</td>
-                {# <td>{{ funcionario.remuneracao.pagamento|number_format(2, ',', '.') }}</td> #}
+                <td>{{ funcionario.salario.pagamento|number_format(2, ',', '.') }}</td>
             </tr>
         {% else %}
             <tr>
