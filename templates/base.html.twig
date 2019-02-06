@@ -7,13 +7,9 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
     <title>{% block title %}Welcome!{% endblock %}</title>
-
-    <!-- Bootstrap core CSS -->
-<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <style>
-    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% block stylesheets %}
+        <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -25,10 +21,11 @@
         }
       }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="/assets/css/starter-template.css" rel="stylesheet">
+        {% endblock %}
+
   </head>
   <body>
+  <main role="main" class="container mt-5">
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
   
   <a class="navbar-brand" href="#">Navbar</a>
@@ -62,11 +59,12 @@
   </div>
 </nav>
 
-<main role="main" class="container">
+
 
  {% block body %}{% endblock %}
 
 </main><!-- /.container -->
+{% block javascripts %}
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="/assets/js/bootstrap.bundle.min.js" ></script></body>
 <script>
@@ -86,4 +84,7 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
   return false;
 });
 </script>
+{% endblock %}
+
+</body>
 </html>
