@@ -7,7 +7,7 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-/.env
+
 /.data
 ###> symfony/phpunit-bridge ###
 .phpunit
