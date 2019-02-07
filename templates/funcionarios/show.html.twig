@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Funcionarios{% endblock %}
+
+{% block body %}
+    <h1>Funcionarios</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th> Nome </th>
+                <td> {{ funcionario.nome }} </td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td> {% if funcionario.tipo == 1 %}Estatutario{% else %}Comissionado{% endif %} </td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if funcionario.status == 1 %}Ativo{% else %}Inativo{% endif %} </td>
+            </tr>
+            <tr>
+                <th>Salário Base</th>
+                <td>R$ {{ funcionario.salario.salbase|number_format(2,',','.') }} </td>
+            </tr>
+            <tr>
+                <th>Gratificação</th>
+                <td>R$ {{ funcionario.salario.gratificacao|number_format(2,',','.') }} </td>
+            </tr>
+            <tr>
+                <th>Desconto</th>
+                <td>R$ {{ funcionario.salario.desconto|number_format(2,',','.') }} </td>
+            </tr>
+            <tr>
+            <th>Imagen(s)</th>
+            {% for documento in funcionario.imagem %}
+                <td><img src="{{ asset('uploads/img/' ~ documento.imagem) }}"></td>
+                 
+            {% else %}
+                <tr>
+                    <td colspan="5">nenhuma imagem encontrada</td>
+                </tr>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <a href="{{ path('funcionarios_index') }}">Voltar para lista</a>
+
+    <a href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}"> | Editar</a>
+
+    {{ include('funcionarios/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novos Documentos{% endblock %}
+
+{% block body %}
+    <h1>Criar novos Documentos</h1>
+
+    {{ include('documentos/_form.html.twig') }}
+
+    <a href="/">voltar para Início</a>
+{% endblock %}

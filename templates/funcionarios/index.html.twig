@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Funcionários {% endblock %}
+
+{% block body %}
+
+    <h1>Lista de Funcionários</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Status</th>
+                <th>Tem Doc.</th> 
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for funcionario in funcionarios %}
+       
+            <tr>
+                <td>{{ funcionario.nome }}</td>
+                <td>{% if funcionario.tipo == 1 %}Estatutario{% else %}Comissionado{% endif %}</td>
+                <td>{% if funcionario.Status == 1 %}Ativo{% else %}Inativo{% endif %}</td>
+                <td>{% if funcionario.imagem|length > 0 %}Sim{% else %}Nao{% endif %} </td>
+                <td><a href="{{ path('funcionarios_show', {'id': funcionario.id}) }}">mostrar | </a><a href="{{ path('funcionarios_edit', {'id': funcionario.id}) }}">editar</a></td>
+            </tr>
+        
+        
+        {% else %}
+            <tr>
+                <td colspan="5">nenhum registro encontrado</td>
+            </tr>
+        {% endfor %}
+       
+        </tbody>
+    </table>
+
+    <a href="{{ path('funcionarios_new') }}">Criar novo funcionário</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Secretarias{% endblock %}
+
+{% block body %}
+    <h1>Secretarias</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nome da secretaria</th>
+                <td>{{ secretaria.nome }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('secretarias_index') }}">voltar para lista</a>
+
+    <a href="{{ path('secretarias_edit', {'id': secretaria.id}) }}"> | editar</a>
+
+    {{ include('secretarias/_delete_form.html.twig') }}
+{% endblock %}

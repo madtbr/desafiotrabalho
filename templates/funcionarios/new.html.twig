@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novos Funcionários{% endblock %}
+
+{% block body %}
+    <h1>Criação de novos Funcionarios</h1>
+
+    {{ include('funcionarios/_form.html.twig') }}
+
+    <a href="{{ path('funcionarios_index') }}">voltar para lista</a>
+
+{% endblock %}

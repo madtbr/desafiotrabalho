@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Novas Scretarias {% endblock %}
+
+{% block body %}
+    <h1> Criar novas Secretarias </h1>
+
+    {{ include('secretarias/_form.html.twig') }}
+
+    <br><a href="{{ path('secretarias_index') }}">  voltar para lista </a>
+{% endblock %}

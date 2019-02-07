@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% block stylesheets %}
+        <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+        {% endblock %}
+
+  </head>
+  <body>
+  <main role="main" class="container mt-5">
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="/secretarias">Secretarias</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cadastros
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        
+          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Funcionarios</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/funcionarios">Cadastro Funcionário</a></li>
+              <li><a class="dropdown-item" href="/documentos/new">Cadastro novo Documento</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="/relatorio/funcionario">Relatórios</a></li>
+      <li class="nav-item"><a class="nav-link" style="color:red" href="/logout">Sair do Sistema</a></li> 
+    </ul>
+   
+  </div>
+</nav>
+
+
+
+ {% block body %}{% endblock %}
+
+</main><!-- /.container -->
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/bootstrap.bundle.min.js" ></script></body>
+<script>
+$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
+
+
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass("show");
+  });
+
+
+  return false;
+});
+</script>
+{% endblock %}
+
+</body>
+</html>
