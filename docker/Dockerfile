@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM php:7.2-fpm
+=======
+FROM php:7.1-fpm
+>>>>>>> d3a6645131f04ebae1e10d0d2c0503c554c5a4cb
 
 RUN apt-get update
 
