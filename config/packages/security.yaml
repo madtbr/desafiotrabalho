@@ -1,11 +1,7 @@
 security:
     encoders:
         App\Entity\User:
-<<<<<<< HEAD
             algorithm: bcrypt
-=======
-            algorithm: argon2i
->>>>>>> d3a6645131f04ebae1e10d0d2c0503c554c5a4cb
 
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers

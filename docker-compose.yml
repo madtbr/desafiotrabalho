@@ -41,19 +41,11 @@ services:
       image: mysql:5.7
       command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
       ports:
-<<<<<<< HEAD
         - "3307:3306"
-=======
-        - "3306:3306"
->>>>>>> d3a6645131f04ebae1e10d0d2c0503c554c5a4cb
       volumes:
         - "./.data/db:/var/lib/mysql"
       environment:
         - "MYSQL_ROOT_PASSWORD=rootPass"
         - "MYSQL_USER=appuser"
         - "MYSQL_PASSWORD=userPass"
-<<<<<<< HEAD
         - "MYSQL_DATABASE=app"
-=======
-        - "MYSQL_DATABASE=app"
->>>>>>> d3a6645131f04ebae1e10d0d2c0503c554c5a4cb
